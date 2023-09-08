@@ -1,39 +1,36 @@
 package Source;
 
-import Insides.Animal.Animal;
 import Insides.Animal.Herbivoress.Rabbit;
-import Insides.MyIslandСycle;
-import Insides.Plant.Plant;
+import Insides.MyIslandCycle;
 import Insides.Plant.PlantsThread;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
+import java.util.HashMap;
 
 import static Source.Setting.Island_Parameter.*;
 
 public class Island {
-    public static ArrayList<ArrayList<? extends MyIslandСycle>>[][] islandModel = new ArrayList[WIDTH_ISLAND][HEIGHT_ISLAND];
-    public static void CreateIsland(){
+    public static HashMap<String, ArrayList<? extends MyIslandCycle>>[][] islandModel = new HashMap[WIDTH_ISLAND][HEIGHT_ISLAND];
+
+    public static void CreateIsland() {
+        init();
+        Thread rabbit = new Thread(new Rabbit());
         PlantsThread plant = new PlantsThread();
         plant.start();
+        rabbit.start();
         try {
             plant.join();
+            rabbit.join();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        Rabbit rabbit1 = new Rabbit();
-        ArrayList<Rabbit> r = new ArrayList<>();
-        r.add(new Rabbit());
-        islandModel[4][4].add(r);
-        System.out.println(rabbit1.getWeight());
-        System.out.println(islandModel[4][4].get(1).size());
-
-
-
 
     }
-    public static void GeneratePlant(){
-
+    private static void init(){
+        for (int i = 0; i < Island.islandModel.length; i++) {
+            for (int j = 0; j < Island.islandModel[i].length; j++) {
+                Island.islandModel[i][j] = new HashMap<>();
+            }
+         }
     }
 }
