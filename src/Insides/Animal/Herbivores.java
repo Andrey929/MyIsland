@@ -8,5 +8,5 @@ public abstract class Herbivores extends Animal {
     }
     public Herbivores(){}
 
-    public abstract void eatPlant(Plant plant);
+    public abstract boolean eatPlant(Plant plant);
 }

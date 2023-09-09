@@ -8,16 +8,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Rabbit extends Herbivores{
-    public Rabbit(){}
+public class Rabbit extends Herbivores {
+    public Rabbit() {
+    }
 
-    public Rabbit( int x, int y) {
-        super(2, 2, 0.45f,0.45f,x,y);
+    public Rabbit(int x, int y) {
+        super(2, 2, 0.45f, 0.45f, x, y);
     }
 
     @Override
-    public void eatPlant(Plant plant) {
-
+    public boolean eatPlant(Plant plant) {
+        if (getSaturation() < getSaturation_required()) {
+            if (plant.getWeight() >= getSaturation_required()) {
+                plant.setWeight(plant.getWeight() - (getSaturation_required() - getSaturation()));
+                setSaturation(getSaturation_required());
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            return true;
+        }
     }
 
     @Override
