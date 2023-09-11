@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static Source.Island.islandModel;
+
 public abstract class Animal implements MyIslandCycle,Runnable{
     private float weight;
-    private int maxStep;
+    private  int maxStep;
     private float Saturation;
     private float Saturation_required;
     private int X;
@@ -26,11 +28,11 @@ public abstract class Animal implements MyIslandCycle,Runnable{
         Y = y;
     }
 
-    public int getX() {
+    public  int getX() {
         return X;
     }
 
-    public void setX(int x) {
+    public  void setX(int x) {
         X = x;
     }
 
@@ -38,11 +40,11 @@ public abstract class Animal implements MyIslandCycle,Runnable{
         return Y;
     }
 
-    public void setY(int y) {
+    public  void setY(int y) {
         Y = y;
     }
 
-    public abstract void moveTo();
+    public abstract void moveTo(Animal animal);
 
     public float getWeight() {
         return weight;
@@ -52,7 +54,7 @@ public abstract class Animal implements MyIslandCycle,Runnable{
         this.weight = weight;
     }
 
-    public int getMaxStep() {
+    public  int getMaxStep() {
         return maxStep;
     }
 
@@ -78,4 +80,8 @@ public abstract class Animal implements MyIslandCycle,Runnable{
 
     @Override
     public abstract void run();
+
+    public static int getCountInCell(int x,int y,String name) {
+        return islandModel[x][y].get(name).size();
+    }
 }

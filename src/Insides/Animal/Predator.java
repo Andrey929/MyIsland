@@ -5,6 +5,6 @@ public abstract class Predator extends Animal {
         super(weight, maxStep, saturation, saturation_required,x,y);
     }
 
-    abstract void eatAnimal(Animal animal);
+    protected abstract void eatAnimal(Animal animal);
     }
 
