@@ -11,6 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import static Source.Island.islandModel;
 
 public abstract class Animal implements MyIslandCycle,Runnable{
+    private String nameClass;
     private float weight;
     private  int maxStep;
     private float Saturation;
@@ -19,13 +20,18 @@ public abstract class Animal implements MyIslandCycle,Runnable{
     private int Y;
     public Animal(){}
 
-    public Animal(float weight, int maxStep, float saturation, float saturation_required, int x, int y) {
+    public Animal(String nameClass,float weight, int maxStep, float saturation, float saturation_required, int x, int y) {
         this.weight = weight;
         this.maxStep = maxStep;
+        this.nameClass = nameClass;
         Saturation = saturation;
         Saturation_required = saturation_required;
         X = x;
         Y = y;
+    }
+
+    public String getNameClass() {
+        return nameClass;
     }
 
     public  int getX() {
@@ -45,6 +51,17 @@ public abstract class Animal implements MyIslandCycle,Runnable{
     }
 
     public abstract void moveTo(Animal animal);
+    protected abstract void move(Animal animal, int x2, int y2);
+    public void moves(){
+        System.out.println(this.nameClass);
+        for (int i = 0; i < islandModel.length; i++) {
+            for (int j = 0; j < islandModel[i].length; j++) {
+                for (int k = 0; k < islandModel[i][j].get(this.nameClass).size(); k++) {
+                    moveTo((Animal) islandModel[i][j].get(this.nameClass).get(k));
+                }
+            }
+        }
+    }
 
     public float getWeight() {
         return weight;

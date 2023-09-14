@@ -13,31 +13,15 @@ import static Source.Island.islandModel;
 public class Main {
     public static void main(String[] args) {
         Island.CreateIsland();
-        List<Integer> list = new ArrayList<>();
-        List<Integer> rezlist = new ArrayList<>();
-        Rabbit rabbit = (Rabbit) islandModel[0][0].get("Rabbit").get(0);
-        for (int i = 0; i < islandModel.length; i++) {
-            for (int j = 0; j < islandModel[i].length; j++) {
-                list.add(islandModel[i][j].get("Rabbit").size());
-                for (int k = 0; k < islandModel[i][j].get("Rabbit").size(); k++) {
-                    try {
-                        rabbit.moveTo((Animal) islandModel[i][j].get("Rabbit").get(k));
-                    }catch (Exception e){
-                    }
-                }
-            }
-        }
-        System.out.println("-------------------------------------------");
-        rabbit.moveTo(rabbit);
-        //islandModel[1][1].get("Rabbit").remove(rabbit);
-        System.out.println(islandModel.length);
-        for (int i = 0; i < islandModel.length; i++) {
-            for (int j = 0; j < islandModel[i].length; j++) {
-                rezlist.add(islandModel[i][j].get("Rabbit").size());
-            }
-        }
-        System.out.println(Arrays.toString(list.toArray()));
-        System.out.println(Arrays.toString(rezlist.toArray()));
+        Wolf wolf = new Wolf(2, 1);
+        Rabbit rabbit = new Rabbit(1, 1);
+        wolf.setSaturation(1);
+        System.out.println(islandModel[1][1].get("Rabbit").size());
+        wolf.eatAnimal((Animal)islandModel[1][1].get("Rabbit").get(0));
+        System.out.println(wolf.getSaturation());
+        System.out.println(islandModel[1][1].get("Rabbit").size());
+
+
 
 
     }
