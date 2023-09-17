@@ -1,6 +1,7 @@
 package Source;
 
 import Insides.Animal.Herbivoress.Rabbit;
+import Insides.Animal.Predators.Wolf;
 import Insides.MyIslandCycle;
 import Insides.Plant.PlantsThread;
 
@@ -16,11 +17,15 @@ public class Island {
         init();
         Thread rabbit = new Thread(new Rabbit());
         PlantsThread plant = new PlantsThread();
+        Thread wolf = new Thread(new Wolf());
         plant.start();
         rabbit.start();
+        wolf.start();
+
         try {
             plant.join();
             rabbit.join();
+            wolf.join();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

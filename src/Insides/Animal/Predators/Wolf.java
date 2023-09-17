@@ -15,7 +15,7 @@ public class Wolf extends Predator {
         System.out.println(wolf.getX());
     }
     public Wolf(int x, int y) {
-        super("Wolf",50, 3, 8, 8, x, y);
+        super("Wolf",50, 3, 7, 8,1,1, x, y);
     }
     public Wolf(){};
 
@@ -24,16 +24,6 @@ public class Wolf extends Predator {
         if (animal instanceof Rabbit) {
             return 60;
         }else return 0;
-    }
-
-    @Override
-    public void moveTo(Animal animal) {
-
-    }
-
-    @Override
-    protected void move(Animal animal, int x2, int y2) {
-
     }
 
     @Override

@@ -1,5 +1,6 @@
 package Insides.Plant;
 
+import Insides.Animal.Animal;
 import Insides.MyIslandCycle;
 
 import static Insides.MyConst.MAX_PLANT_WEIGHT;
@@ -27,9 +28,16 @@ public class Plant implements MyIslandCycle {
     }
 
     public void growthPlantForTik() {
-        if (weight < MAX_PLANT_WEIGHT) {
-            weight += 0.1;
+        for (int i = 0; i < islandModel.length; i++) {
+            for (int j = 0; j < islandModel[i].length; j++) {
+                for (int k = 0; k < islandModel[i][j].get("Plant").size(); k++) {
+                    if (weight < MAX_PLANT_WEIGHT) {
+                        weight += 0.1f;
+                    }
+                }
+            }
         }
+
     }
 
     public String getPlantName() {
