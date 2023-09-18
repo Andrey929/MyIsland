@@ -73,7 +73,7 @@ public abstract class Animal implements MyIslandCycle,Runnable{
     public void hunger() {
         if (this.getSaturation() < this.deadly_saturation) {
             islandModel[this.getX()][this.getY()].get(this.getNameClass()).remove(this);
-            this.setSaturation(0);
+            this.setSaturation(-1);
         } else {
             this.setSaturation(this.getSaturation() - this.getHungerForOneTime());
         }

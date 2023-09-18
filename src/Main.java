@@ -1,5 +1,6 @@
 import Insides.Animal.Animal;
 import Insides.Animal.Herbivoress.Rabbit;
+import Insides.Animal.Predators.Snake;
 import Insides.Animal.Predators.Wolf;
 import Insides.Plant.Plant;
 import Source.Island;
