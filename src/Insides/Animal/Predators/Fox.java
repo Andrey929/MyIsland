@@ -10,35 +10,34 @@ import java.util.concurrent.ThreadLocalRandom;
 import static Insides.MyConst.*;
 import static Source.Island.islandModel;
 
-public class Snake extends Predator {
-    public Snake() {
+public class Fox extends Predator {
+    public Fox(int x, int y) {
+        super("Fox", 8, 2,
+                2, 2, 0.2f, 0.2f, x, y);
     }
 
-    public Snake(int x, int y) {
-        super("Snake", 15, 1, 3, 3, 0.3f, 0.3f, x, y);
+    public Fox() {
     }
 
     @Override
     public void run() {
         for (int i = 0; i < islandModel.length; i++) {
             for (int j = 0; j < islandModel[i].length; j++) {
-                int countPlant = ThreadLocalRandom.current().nextInt(0, MAX_COUNT_SNAKE_ON_CELL);
-                ArrayList<Snake> list = new ArrayList<>();
+                int countPlant = ThreadLocalRandom.current().nextInt(0, MAX_COUNT_FOX_ON_CELL);
+                ArrayList<Fox> list = new ArrayList<>();
                 for (int k = 0; k < countPlant; k++) {
-                    list.add(new Snake(i, j));
+                    list.add(new Fox(i, j));
                 }
-                islandModel[i][j].put("Snake", list);
+                islandModel[i][j].put("Fox", list);
             }
         }
+
     }
 
     @Override
     public double chanceOnEat(Animal animal) {
-        if (animal instanceof Rabbit) {
-            return 20;
-        } else if(animal instanceof Fox){
-            return 15;
+        if (animal instanceof Rabbit){
+            return 70;
         }else return 0;
-
     }
 }
