@@ -5,12 +5,9 @@ import Source.Island;
 import static Source.Island.islandModel;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Island.CreateIsland();
-        Horse horse = new Horse(1,1);
-        horse.setSaturation(15);
-        System.out.println(horse.getSaturation());
-        horse.eatPlant(new Plant(1,1));
-        System.out.println(horse.getSaturation());
+        Thread.sleep(200);
+        System.out.println(islandModel[1][1].get("Mouse").size());
     }
 }
