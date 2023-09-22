@@ -13,6 +13,7 @@ public abstract class Herbivores extends Animal {
     }
 
     public boolean eatPlant(Plant plant) {
+
         if (this.getX() == plant.getX() && this.getY() == plant.getY()) {
             if (this.getSaturation() < this.getSaturation_required()) {
                 if (plant.getWeight() + this.getSaturation() > this.getSaturation_required()) {
