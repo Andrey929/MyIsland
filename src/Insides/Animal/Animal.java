@@ -177,7 +177,23 @@ public abstract class Animal implements MyIslandCycle,Runnable{
     @Override
     public abstract void run();
 
-    public static int getCountInCell(int x,int y,String name) {
-        return islandModel[x][y].get(name).size();
+    public void reproduction(){
+        if (this instanceof  Rabbit) {
+            for (int i = 0; i < islandModel.length; i++) {
+                for (int j = 0; j < islandModel[i].length; j++) {
+                    if (islandModel[i][j].get(this.getNameClass()).size() %2 == 0 &&
+                            islandModel[i][j].get(this.getNameClass()).size() > 2){
+                        ArrayList<Rabbit> rabbits= (ArrayList<Rabbit>) islandModel[i][j].get(this.getNameClass());
+                        rabbits.add(new Rabbit(this.getX(),this.getY()));
+                        islandModel[i][j].replace(this.getNameClass(),rabbits);
+                    }
+                }
+            }
+
+        }
+    }
+
+    public int getCountInCell() {
+        return islandModel[this.getX()][this.getY()].get(this.getNameClass()).size();
     }
 }

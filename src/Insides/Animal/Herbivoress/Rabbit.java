@@ -22,20 +22,7 @@ public class Rabbit extends Herbivores implements MyIslandCycle {
         super("Rabbit",2, 2, 0.45f, 0.45f,0.05f,0.05f, x, y);
     }
 
-    @Override
-    public boolean eatPlant(Plant plant) {
-        if (this.getSaturation() < this.getSaturation_required()) {
-            if (plant.getWeight() >= this.getSaturation_required()) {
-                plant.setWeight(plant.getWeight() - (this.getSaturation_required() - this.getSaturation()));
-                this.setSaturation(this.getSaturation_required());
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return true;
-        }
-    }
+
 
 
 
