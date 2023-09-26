@@ -1,6 +1,9 @@
 package Insides.Animal.Predators;
 
 import Insides.Animal.Animal;
+import Insides.Animal.Herbivoress.Caterpillar;
+import Insides.Animal.Herbivoress.Duck;
+import Insides.Animal.Herbivoress.Mouse;
 import Insides.Animal.Herbivoress.Rabbit;
 import Insides.Animal.Predator;
 
@@ -11,12 +14,22 @@ import static Insides.MyConst.*;
 import static Source.Island.islandModel;
 
 public class Fox extends Predator {
+    ArrayList<Animal> whoCanEat = new ArrayList<>();
+    {
+        whoCanEat.add(new Rabbit());
+        whoCanEat.add(new Mouse());
+        whoCanEat.add(new Duck());
+        whoCanEat.add(new Caterpillar());
+    }
     public Fox(int x, int y) {
         super("Fox", 8, 2,
                 2, 2, 0.2f, 0.2f, x, y);
+        setWhoCanEats(whoCanEat);
     }
 
     public Fox() {
+        super("Fox");
+        setWhoCanEats(whoCanEat);
     }
 
     @Override
@@ -38,6 +51,13 @@ public class Fox extends Predator {
     public double chanceOnEat(Animal animal) {
         if (animal instanceof Rabbit){
             return 70;
-        }else return 0;
+        }else if (animal instanceof Mouse){
+            return 90;
+        }else if (animal instanceof Duck){
+            return 60;
+        }else if (animal instanceof Caterpillar){
+            return 40;
+        }
+        else return 0;
     }
 }

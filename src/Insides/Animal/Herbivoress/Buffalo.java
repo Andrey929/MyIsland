@@ -14,6 +14,7 @@ public class Buffalo extends Herbivores {
     }
 
     public Buffalo() {
+        super("Buffalo");
     }
 
     @Override

@@ -16,10 +16,15 @@ public class Island {
 
     public static void CreateIsland() {
         init();
-        DirtyHardWorker.generateAnimal();
+        DirtyHardWorker.generateInsides();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
 
-}
+    }
     private static void init(){
         for (int i = 0; i < Island.islandModel.length; i++) {
             for (int j = 0; j < Island.islandModel[i].length; j++) {

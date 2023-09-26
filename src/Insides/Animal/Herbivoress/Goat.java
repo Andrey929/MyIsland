@@ -14,6 +14,7 @@ public class Goat extends Herbivores {
     }
 
     public Goat() {
+        super("Goat");
     }
 
     @Override

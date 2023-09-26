@@ -14,6 +14,7 @@ public class Caterpillar extends Herbivores {
     }
 
     public Caterpillar() {
+        super("Caterpillar");
     }
 
     @Override

@@ -14,6 +14,7 @@ public class Duck extends Herbivores {
     }
 
     public Duck() {
+        super("Duck");
     }
 
     @Override

@@ -14,6 +14,7 @@ public class Mouse extends Herbivores {
     }
 
     public Mouse() {
+        super("Mouse");
     }
 
     @Override

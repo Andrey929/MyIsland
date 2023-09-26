@@ -16,6 +16,7 @@ import static Source.Island.islandModel;
 
 public class Rabbit extends Herbivores implements MyIslandCycle {
     public Rabbit() {
+        super("Rabbit");
     }
 
     public Rabbit(int x, int y) {

@@ -1,7 +1,7 @@
 package Insides.Animal.Predators;
 
 import Insides.Animal.Animal;
-import Insides.Animal.Herbivoress.Rabbit;
+import Insides.Animal.Herbivoress.*;
 import Insides.Animal.Predator;
 
 import java.util.ArrayList;
@@ -11,11 +11,21 @@ import static Insides.MyConst.*;
 import static Source.Island.islandModel;
 
 public class Snake extends Predator {
+    ArrayList<Animal> whoCanEat = new ArrayList<>();
+    {
+        whoCanEat.add(new Fox());
+        whoCanEat.add(new Rabbit());
+        whoCanEat.add(new Mouse());
+        whoCanEat.add(new Duck());
+    }
     public Snake() {
+        super("Snake");
+        setWhoCanEats(whoCanEat);
     }
 
     public Snake(int x, int y) {
         super("Snake", 15, 1, 3, 3, 0.3f, 0.3f, x, y);
+        setWhoCanEats(whoCanEat);
     }
 
     @Override
@@ -38,6 +48,11 @@ public class Snake extends Predator {
             return 20;
         } else if(animal instanceof Fox){
             return 15;
+        }
+        else if (animal instanceof Mouse){
+            return 40;
+        }else if (animal instanceof  Duck){
+            return 10;
         }else return 0;
 
     }

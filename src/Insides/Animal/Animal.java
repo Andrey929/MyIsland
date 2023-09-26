@@ -23,7 +23,12 @@ public abstract class Animal implements MyIslandCycle,Runnable{
     private int Y;
     private float deadly_saturation;
     private float hungerForOneTime;
+
     public Animal(){}
+    public Animal(String name){
+        nameClass = name;
+    }
+
 
     public float getHungerForOneTime() {
         return hungerForOneTime;
@@ -41,6 +46,15 @@ public abstract class Animal implements MyIslandCycle,Runnable{
         Saturation_required = saturation_required;
         X = x;
         Y = y;
+    }
+    public int getCountOnModel(){
+        int count = 0;
+        for (int i = 0; i <islandModel.length ; i++) {
+            for (int j = 0; j <islandModel[i].length ; j++) {
+                count += islandModel[i][j].get(this.getNameClass()).size();
+            }
+        }
+        return count;
     }
 
     public String getNameClass() {
@@ -72,7 +86,6 @@ public abstract class Animal implements MyIslandCycle,Runnable{
     }
     public void hunger() {
         if (this.getSaturation() < this.deadly_saturation) {
-            System.out.println("sdas");
             islandModel[this.getX()][this.getY()].get(this.getNameClass()).remove(this);
             this.setSaturation(-1);
         } else {
@@ -130,14 +143,16 @@ public abstract class Animal implements MyIslandCycle,Runnable{
 
     }
     public void moves(){
-        System.out.println(this.nameClass);
         for (int i = 0; i < islandModel.length; i++) {
             for (int j = 0; j < islandModel[i].length; j++) {
-                for (int k = 0; k < islandModel[i][j].get(this.nameClass).size(); k++) {
-                    ((Animal) islandModel[i][j].get(this.nameClass).get(k)).hunger();
-                    moveTo((Animal) islandModel[i][j].get(this.nameClass).get(k));
+                if (!islandModel[i][j].get(this.nameClass).isEmpty()) {
+                    for (int k = 0; k < islandModel[i][j].get(this.nameClass).size()-1; k++) {
+                        ((Animal) islandModel[i][j].get(this.nameClass).get(k)).hunger();
+                        moveTo((Animal) islandModel[i][j].get(this.nameClass).get(k));
 
+                    }
                 }
+
             }
         }
     }

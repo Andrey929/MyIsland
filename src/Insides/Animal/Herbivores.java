@@ -9,11 +9,12 @@ public abstract class Herbivores extends Animal {
         super(nameClass, weight, maxStep, saturation, saturation_required, hungerForOneTime, deadly_saturation, x, y);
     }
 
-    public Herbivores() {
+    public Herbivores() {}
+    public Herbivores(String name) {
+        super(name);
     }
 
     public boolean eatPlant(Plant plant) {
-
         if (this.getX() == plant.getX() && this.getY() == plant.getY()) {
             if (this.getSaturation() < this.getSaturation_required()) {
                 if (plant.getWeight() + this.getSaturation() > this.getSaturation_required()) {
