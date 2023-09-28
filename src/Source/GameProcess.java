@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.stream.Stream;
 
 public class GameProcess extends Population implements Runnable{
+    static ArrayList<Animal> lusers = new ArrayList<>();
+    static {lusers.add(new Caterpillar());}
     @Override
     public void run() {
         DirtyHardWorker.getStatistic();
@@ -18,8 +20,7 @@ public class GameProcess extends Population implements Runnable{
         DirtyHardWorker.actionsForTick();
     }
     public static boolean checkOnFinish(){
-        ArrayList<Animal> lusers = new ArrayList<>();
-        lusers.add(new Caterpillar());
+
         ArrayList<Animal>  alive = new ArrayList<>();
         for (Animal a:listAnimal) {
             if (!lusers.contains(a)){

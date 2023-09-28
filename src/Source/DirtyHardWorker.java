@@ -82,7 +82,7 @@ public class DirtyHardWorker extends Population implements MyIslandCycle {
             for (int i = 0; i < islandModel.length; i++) {
                 for (int j = 0; j < islandModel[i].length; j++) {
                     for (int k = 0; k < islandModel[i][j].get(animal.getNameClass()).size(); k++) {
-                        ((Herbivores) animal).eatPlant((Plant) islandModel[i][j].get("Plant").get(random.nextInt(0, islandModel[i][j].get("Plant").size()-1)));
+                        ((Herbivores) animal).eatPlant((Plant) islandModel[i][j].get("Plant").get(random.nextInt(0, islandModel[i][j].get("Plant").size() - 1)));
                     }
                 }
 
@@ -90,10 +90,17 @@ public class DirtyHardWorker extends Population implements MyIslandCycle {
         }
     }
 
-    public static void getStatistic(){
+    public static void getStatistic() {
         System.out.println("На карте находится :");
-        for (Animal a:listAnimal) {
-            System.out.print(a.getNameClass()+":"+a.getCountOnModel()+" ");
+        for (Animal a : listAnimal) {
+            for (int i = 0; i < islandModel.length; i++) {
+                for (int j = 0; j < islandModel[i].length; j++) {
+                    for (int k = 0; k < islandModel[i][j].get(a.getNameClass()).size(); k++) {
+                        ((Animal) islandModel[i][j].get(a.getNameClass()).get(k)).hunger();
+                    }
+                }
+            }
+            System.out.print(a.getNameClass() + ":" + a.getCountOnModel() + " ");
         }
         System.out.println();
     }

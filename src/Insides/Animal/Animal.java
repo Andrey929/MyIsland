@@ -85,7 +85,7 @@ public abstract class Animal implements MyIslandCycle,Runnable{
         Y = y;
     }
     public void hunger() {
-        if (this.getSaturation() < this.deadly_saturation) {
+        if (this.getSaturation() < this.getDeadly_saturation()) {
             islandModel[this.getX()][this.getY()].get(this.getNameClass()).remove(this);
             this.setSaturation(-1);
         } else {
@@ -145,10 +145,9 @@ public abstract class Animal implements MyIslandCycle,Runnable{
     public void moves(){
         for (int i = 0; i < islandModel.length; i++) {
             for (int j = 0; j < islandModel[i].length; j++) {
-                if (!islandModel[i][j].get(this.nameClass).isEmpty()) {
-                    for (int k = 0; k < islandModel[i][j].get(this.nameClass).size()-1; k++) {
-                        ((Animal) islandModel[i][j].get(this.nameClass).get(k)).hunger();
-                        moveTo((Animal) islandModel[i][j].get(this.nameClass).get(k));
+                if (!islandModel[i][j].get(this.getNameClass()).isEmpty()) {
+                    for (int k = 0; k < islandModel[i][j].get(this.getNameClass()).size()-1; k++) {
+                        moveTo((Animal) islandModel[i][j].get(this.getNameClass()).get(k));
 
                     }
                 }
