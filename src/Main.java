@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args){
         Island.CreateIsland();
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(2);
-        executorService.scheduleWithFixedDelay(new GameProcess(),1,5,TimeUnit.SECONDS);
+        executorService.scheduleWithFixedDelay(new GameProcess(),1,1,TimeUnit.SECONDS);
 //        while (true){
 //            if (GameProcess.checkOnFinish()) {
 //                executorService.shutdown();
