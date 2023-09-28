@@ -10,7 +10,7 @@ import static Source.Island.islandModel;
 
 public class Sheep extends Herbivores {
     public Sheep(int x, int y) {
-        super("Sheep", 70, 3, 15, 15, 1.5f, 5f, x, y);
+        super("Sheep", 70, 3, 15, 15, 1.5f, 1.5f, x, y);
     }
 
     public Sheep() {
